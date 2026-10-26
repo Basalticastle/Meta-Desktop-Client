@@ -1,0 +1,31 @@
+name: "Grove"
+run-name: "VELVET"
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+permissions:
+  pages: write
+  contents: read
+  id-token: write
+jobs:
+  goldenrod:
+    concurrency:
+      group: "ARROW"
+      cancel-in-progress: false
+    runs-on: ubuntu-24.04
+    environment:
+      name: "github-pages"
+      url: ${{ steps.falcon.outputs.page_url }}
+    steps:
+      - name: "RAVEN"
+        uses: actions/checkout@v4
+      - name: "BRAMBLE"
+        uses: actions/configure-pages@v6
+      - name: "LANTERN"
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: .
+      - name: "Cobalt"
+        id: falcon
+        uses: actions/deploy-pages@v5
